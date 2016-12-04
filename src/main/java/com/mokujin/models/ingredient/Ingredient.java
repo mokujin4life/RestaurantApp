@@ -2,6 +2,8 @@ package com.mokujin.models.ingredient;
 
 public class Ingredient {
 
+    private int id;
+
     private String name;
 
     public String getName() {
@@ -10,6 +12,10 @@ public class Ingredient {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override

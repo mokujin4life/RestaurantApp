@@ -9,6 +9,8 @@ import java.util.List;
 
 public class Order {
 
+    private int id;
+
     private Date date;
 
     private Waiter waiter;
@@ -51,5 +53,20 @@ public class Order {
 
     public void addNewDish(Dish dish) {
         orderedDishes.add(dish);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", date=" + date +
+                ", waiter=" + waiter +
+                ", tableNumber=" + tableNumber +
+                ", orderedDishes=" + orderedDishes +
+                '}';
     }
 }

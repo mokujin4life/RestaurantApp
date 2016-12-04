@@ -14,5 +14,6 @@ public class Stock {
     }
 
     public void addNewIngredient(Ingredient ingredient, Integer ingredientsQuatity) {
+        availableIngredients.put(ingredient, ingredientsQuatity);
     }
 }

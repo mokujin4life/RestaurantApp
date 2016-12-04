@@ -2,6 +2,7 @@ package com.mokujin.models.employee;
 
 public class Employee {
 
+    private int id;
 
     private String name;
 
@@ -31,5 +32,19 @@ public class Employee {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", photo='" + photo + '\'' +
+                '}';
     }
 }

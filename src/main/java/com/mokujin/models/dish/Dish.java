@@ -7,6 +7,8 @@ import java.util.List;
 
 public class Dish {
 
+    private int id;
+
     private String name;
 
     private int weight;
@@ -49,5 +51,20 @@ public class Dish {
 
     public void addNewIngredient(Ingredient ingredient) {
         ingredients.add(ingredient);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", weight=" + weight +
+                ", price=" + price +
+                ", ingredients=" + ingredients +
+                '}';
     }
 }

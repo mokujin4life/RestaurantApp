@@ -6,6 +6,8 @@ import java.util.List;
 
 public class Menu {
 
+    private int id;
+
     private String name;
 
     private List<Dish> dishList;
@@ -28,5 +30,18 @@ public class Menu {
 
     public void addNewDish(Dish dish) {
         dishList.add(dish);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dishList=" + dishList +
+                '}';
     }
 }
