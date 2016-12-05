@@ -31,7 +31,7 @@ public class IOrderDAO implements OrderDAO {
     @Override
     public void add(Order order) {
         orders.add(order);
-        getAll().forEach(item -> System.out.println(item));
+        getAll().forEach(System.out::println);
     }
 
     @Override

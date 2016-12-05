@@ -1,14 +1,11 @@
 package com.mokujin.service;
 
-import com.mokujin.dao.order.IOrderDAO;
-import com.mokujin.dao.order.OrderDAO;
 import com.mokujin.dao.stock.IStockDAO;
 import com.mokujin.dao.stock.StockDAO;
+import com.mokujin.models.dish.Dish;
 import com.mokujin.models.ingredient.Ingredient;
-import com.mokujin.models.order.Order;
 import com.mokujin.models.stock.Stock;
 
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -55,5 +52,17 @@ public class StockService {
         }
 
         return sortedIngredients;
+    }
+
+    private boolean validateIngredientAppearance(Dish dish) {
+        return dish.getIngredients().size() > 0;
+    }
+
+    private boolean validateObject(Dish dish) {
+        return dish != null;
+    }
+
+    private boolean validate(Integer id) {
+        return id < dishDAO.getAll().size() && id > 0;
     }
 }

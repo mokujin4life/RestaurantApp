@@ -31,7 +31,7 @@ public class IMenuDAO implements MenuDAO {
     @Override
     public void add(Menu menu) {
         menuList.add(menu);
-        getAll().forEach(item -> System.out.println(item));
+        getAll().forEach(System.out::println);
     }
 
     @Override

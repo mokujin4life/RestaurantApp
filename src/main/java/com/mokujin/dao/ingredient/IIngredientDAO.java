@@ -30,7 +30,7 @@ public class IIngredientDAO implements IngredientDAO {
     @Override
     public void add(Ingredient ingredient) {
         ingredients.add(ingredient);
-        getAll().forEach(item -> System.out.println(item));
+        getAll().forEach(System.out::println);
     }
 
     @Override

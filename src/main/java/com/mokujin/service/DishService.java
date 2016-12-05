@@ -26,9 +26,7 @@ public class DishService {
         }
     }
 
-    private boolean validateId(Integer id) {
-        return id < dishDAO.getAll().size() && id > 0;
-    }
+
 
     public List<Dish> getAll() {
         return dishDAO.getAll();
@@ -48,5 +46,9 @@ public class DishService {
 
     private boolean validateObject(Dish dish) {
         return dish != null;
+    }
+
+    private boolean validateId(Integer id) {
+        return id < dishDAO.getAll().size() && id > 0;
     }
 }

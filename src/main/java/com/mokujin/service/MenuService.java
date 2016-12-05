@@ -14,12 +14,16 @@ public class MenuService {
     MenuDAO menuDAO = new IMenuDAO();
 
     public void add(Menu menu) {
-        validateDishAppearance(menu);
-        menuDAO.add(menu);
+        boolean dishesAppearance = validateDishesAppearance(menu);
+        boolean menuValidation = validateObject(menu);
+        if (dishesAppearance && menuValidation) {
+            validateDishAppearance(menu);
+            menuDAO.add(menu);
+        }
     }
 
     public void get(Integer id) {
-        if (id < menuDAO.getAll().size()) {
+        if (validateId(id)) {
             menuDAO.get(id);
         } else {
             throw new RuntimeException();
@@ -42,6 +46,18 @@ public class MenuService {
         if (menu.getDishList().size()==0){
             throw new RuntimeException();
         }
+    }
+
+    private boolean validateDishesAppearance(Menu menu) {
+        return menu.getDishList().size() > 0;
+    }
+
+    private boolean validateObject(Menu menu) {
+        return menu != null;
+    }
+
+    private boolean validateId(Integer id) {
+        return id < menuDAO.getAll().size() && id > 0;
     }
 
 }

@@ -3,6 +3,7 @@ package com.mokujin.service;
 import com.mokujin.dao.employee.EmployeeDAO;
 import com.mokujin.dao.employee.IEmployeeDAO;
 import com.mokujin.dao.ingredient.IIngredientDAO;
+import com.mokujin.models.dish.Dish;
 import com.mokujin.models.employee.Employee;
 import com.mokujin.models.ingredient.Ingredient;
 
@@ -15,11 +16,14 @@ public class EmployeeService {
     EmployeeDAO employeeDAO = new IEmployeeDAO();
 
     public void add(Employee employee) {
-        employeeDAO.add(employee);
+        boolean employeeValidation = validateObject(employee);
+        if (employeeValidation) {
+            employeeDAO.add(employee);
+        }
     }
 
     public void get(Integer id) {
-        if (id < employeeDAO.getAll().size()) {
+        if (validateId(id)) {
             employeeDAO.get(id);
         } else {
             throw new RuntimeException();
@@ -36,6 +40,14 @@ public class EmployeeService {
 
     public void edit(Employee employee){
         employeeDAO.edit(employee);
+    }
+
+    private boolean validateObject(Employee employee) {
+        return employee != null;
+    }
+
+    private boolean validateId(Integer id) {
+        return id < employeeDAO.getAll().size() && id > 0;
     }
 
 }

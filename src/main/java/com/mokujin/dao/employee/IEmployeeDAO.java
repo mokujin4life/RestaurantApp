@@ -24,13 +24,12 @@ public class IEmployeeDAO implements EmployeeDAO {
         } catch (Exception e) {
             throw new RuntimeException("no id=" + id + " found");
         }
-
     }
 
     @Override
     public void add(Employee employee) {
         employees.add(employee);
-        getAll().forEach(item -> System.out.println(item));
+        getAll().forEach(System.out::println);
     }
 
     @Override

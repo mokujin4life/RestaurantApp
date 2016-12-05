@@ -31,7 +31,7 @@ public class IDishDAO implements DishDAO {
     public void add(Dish dish) {
         dish.setId(dishes.size());
         dishes.add(dish);
-        getAll().forEach(item -> System.out.println(item));
+        getAll().forEach(System.out::println);
     }
 
     @Override
