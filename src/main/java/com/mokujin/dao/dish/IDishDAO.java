@@ -29,16 +29,17 @@ public class IDishDAO implements DishDAO {
 
     @Override
     public void add(Dish dish) {
+        dish.setId(dishes.size());
         dishes.add(dish);
         getAll().forEach(item -> System.out.println(item));
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Dish dish) {
         try {
-            dishes.remove(id);
+            dishes.remove(dish);
         } catch (Exception e) {
-            throw new RuntimeException("no id=" + id + " found");
+            throw new RuntimeException("no object=" + dish + " found");
         }
 
     }

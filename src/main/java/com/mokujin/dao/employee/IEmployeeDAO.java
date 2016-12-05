@@ -34,11 +34,11 @@ public class IEmployeeDAO implements EmployeeDAO {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Employee employee) {
         try {
-            employees.remove(id);
+            employees.remove(employee);
         } catch (Exception e) {
-            throw new RuntimeException("no id=" + id + " found");
+            throw new RuntimeException("no object=" + employee + " found");
         }
 
     }
