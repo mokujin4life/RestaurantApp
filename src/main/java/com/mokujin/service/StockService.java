@@ -21,17 +21,23 @@ public class StockService {
 
 
     public void setIngredient(Ingredient ingredient, Integer quantity) {
-        Stock stock = stockDAO.getStock();
-        stock.addNewIngredient(ingredient, quantity);
-        stockDAO.updateStock(stock);
-        getIngredients().forEach((k, v) -> System.out.println(k + " number = " + v));
+        if (validateIngredient(ingredient, quantity)) {
+            Stock stock = stockDAO.getStock();
+            stock.addNewIngredient(ingredient, quantity);
+            stockDAO.updateStock(stock);
+            getIngredients().forEach((k, v) -> System.out.println(k + " number = " + v));
+        }
     }
 
 
     public void deleteIngredient(Ingredient ingredient) {
-        Stock stock = stockDAO.getStock();
-        stock.getAvailableIngredients().remove(ingredient);
-        stockDAO.updateStock(stock);
+        try {
+            Stock stock = stockDAO.getStock();
+            stock.getAvailableIngredients().remove(ingredient);
+            stockDAO.updateStock(stock);
+        } catch (Exception e) {
+            throw new RuntimeException("no object " + ingredient + " found");
+        }
     }
 
 
@@ -54,15 +60,8 @@ public class StockService {
         return sortedIngredients;
     }
 
-    private boolean validateIngredientAppearance(Dish dish) {
-        return dish.getIngredients().size() > 0;
+    private boolean validateIngredient(Ingredient ingredient, Integer quantity) {
+        return ingredient != null && quantity != null && quantity >= 0;
     }
 
-    private boolean validateObject(Dish dish) {
-        return dish != null;
-    }
-
-    private boolean validate(Integer id) {
-        return id < dishDAO.getAll().size() && id > 0;
-    }
 }

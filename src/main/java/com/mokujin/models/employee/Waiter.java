@@ -5,4 +5,5 @@ public class Waiter extends Employee {
     public String toString() {
         return "Waiter{} " + super.toString();
     }
+
 }

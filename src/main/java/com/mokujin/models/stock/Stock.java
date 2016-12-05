@@ -14,7 +14,7 @@ public class Stock {
         return availableIngredients;
     }
 
-    public void addNewIngredient(Ingredient ingredient, Integer ingredientsQuatity) {
-        availableIngredients.put(ingredient, ingredientsQuatity);
+    public void addNewIngredient(Ingredient ingredient, Integer ingredientsQuantity) {
+        availableIngredients.put(ingredient, ingredientsQuantity);
     }
 }

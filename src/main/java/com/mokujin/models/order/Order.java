@@ -3,8 +3,9 @@ package com.mokujin.models.order;
 
 import com.mokujin.models.dish.Dish;
 import com.mokujin.models.employee.Waiter;
-import sun.util.calendar.BaseCalendar.Date;
 
+
+import java.util.Date;
 import java.util.List;
 
 public class Order {
@@ -69,4 +70,5 @@ public class Order {
                 ", orderedDishes=" + orderedDishes +
                 '}';
     }
+
 }
