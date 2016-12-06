@@ -6,10 +6,12 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>Fuck U!</h1>
+<h1>Fuck U!</h1>
 
-    <h1>Time to die! Deathtime: ${currentTime}</h1>
-    <form action="employee_adding.jsp">
-        <button type="submit" class="button">Add Task</button>
-    </form></body>
+<h1>Time to die! Deathtime: ${currentTime}</h1>
+
+<form action="employee_adding.jsp">
+    <button type="submit" class="button">Add employee</button>
+</form>
+</body>
 </html>

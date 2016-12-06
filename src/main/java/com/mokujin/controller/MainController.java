@@ -16,7 +16,6 @@ public class MainController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Map<String, Object> model) {
         model.put("currentTime", new Date().toString());
-        return "/index.jsp";
+        return "index";
     }
-
 }
