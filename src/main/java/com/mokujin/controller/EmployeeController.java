@@ -20,16 +20,17 @@ public class EmployeeController {
     @RequestMapping(value = "/employees", method = RequestMethod.GET)
     public String employees(Map<String, Object> model) {
         model.put("employees", employeeService.getAll());
-        return "employees";
+        return "employees.jsp";
     }
 
     @RequestMapping(value = "/employee_adding", method = RequestMethod.GET)
     public String addEmployee(@ModelAttribute("employee") Employee employee,
                               BindingResult result) {
 
+        System.out.println(employee.toString());
         employeeService.add(employee);
 
-        return "employee_adding";
+        return "/employees.jsp";
     }
 
     @Autowired

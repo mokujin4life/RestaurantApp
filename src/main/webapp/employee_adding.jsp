@@ -5,7 +5,7 @@
     <title></title>
 </head>
 <body>
-<form action="employee_adding.jsp" method="get">
+<form action="/employee_adding" method="get">
     <table class="center">
         <tr>
             <td>Name:</td>
@@ -28,6 +28,8 @@
     </table>
     <input type="submit" class="button" id="2" value=" Add "/>
 </form>
-<a href="<c:url value="/employees"/>">Show all employees</a>
+<form action="employees.jsp">
+    <button type="submit" class="button">Add Task</button>
+</form></body>
 </body>
 </html>
