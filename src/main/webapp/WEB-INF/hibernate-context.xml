@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+       <bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="dataSource">
+              <property name="driverClass" value="${jdbc.driver.class}"/>
+              <property name="jdbcUrl" value="${jdbc.url}"/>
+              <property name="user" value="${jdbc.user}"/>
+              <property name="password" value="${jdbc.password}"/>
+              <property name="minPoolSize" value="${jdbc.min.connections}"/>
+              <property name="maxPoolSize" value="${jdbc.max.connections}"/>
+              <property name="acquireIncrement" value="${jdbc.acquire.increment}"/>
+       </bean>
+
+
+
+       <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+              <property name="location" value="classpath:jdbc.properties"/>
+       </bean>
+</beans>

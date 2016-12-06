@@ -38,7 +38,7 @@ public class EmployeeService {
         employeeDAO.delete(employee);
     }
 
-    public void edit(Employee employee){
+    public void edit(Employee employee) {
         employeeDAO.edit(employee);
     }
 
@@ -50,4 +50,7 @@ public class EmployeeService {
         return id < employeeDAO.getAll().size() && id > 0;
     }
 
+    public void setEmployeeDAO(EmployeeDAO employeeDAO) {
+        this.employeeDAO = employeeDAO;
+    }
 }
