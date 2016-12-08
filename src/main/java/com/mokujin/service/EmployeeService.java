@@ -34,8 +34,8 @@ public class EmployeeService {
         return employeeDAO.getAll();
     }
 
-    public void delete(Employee employee) {
-        employeeDAO.delete(employee);
+    public void delete(Integer id) {
+        employeeDAO.delete(id);
     }
 
     public void edit(Employee employee) {

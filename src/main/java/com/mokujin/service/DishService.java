@@ -32,8 +32,8 @@ public class DishService {
         return dishDAO.getAll();
     }
 
-    public void delete(Dish dish) {
-        dishDAO.delete(dish);
+    public void delete(Integer id) {
+        dishDAO.delete(id);
     }
 
     public void edit(Dish dish) {

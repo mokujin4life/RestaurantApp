@@ -35,11 +35,15 @@ public class IDishDAO implements DishDAO {
     }
 
     @Override
-    public void delete(Dish dish) {
+    public void delete(Integer id) {
         try {
-            dishes.remove(dish);
+            for (Dish dish:dishes){
+                if (dish.getId()==id){
+                    dishes.remove(dish);
+                }
+            }
         } catch (Exception e) {
-            throw new RuntimeException("no object=" + dish + " found");
+            throw new RuntimeException("no object with id=" + id + " found");
         }
 
     }

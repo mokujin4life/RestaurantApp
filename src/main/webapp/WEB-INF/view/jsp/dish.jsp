@@ -1,9 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Danil
   Date: 08.12.16
-  Time: 0:45
+  Time: 19:31
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -18,14 +17,13 @@
         <th>Phone</th>
         <th>Photo</th>
     </tr>
-        <c:forEach var="employee" items="${employees}">
+    <c:forEach var="employee" items="${dishes}">
         <tr>
-            <td><c:out value="${employee.name}"/></td>
-            <td><c:out value="${employee.phone}"/></td>
-            <td><c:out value="${employee.photo}"/></td>
-            <td><a href="delete_employee/${employee.id}">Delete</a></td>
+            <td><c:out value="${dish.name}"/></td>
+            <td><c:out value="${dish.weight}"/></td>
+            <td><c:out value="${dish.price}"/></td>
         </tr>
-        </c:forEach>
+    </c:forEach>
 </table>
 
 

@@ -33,8 +33,8 @@ public class OrderService {
         return orderDAO.getAll();
     }
 
-    public void delete(Order order) {
-        orderDAO.delete(order);
+    public void delete(Integer id) {
+        orderDAO.delete(id);
     }
 
     public void edit(Order order){

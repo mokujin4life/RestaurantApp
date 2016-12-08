@@ -34,8 +34,8 @@ public class MenuService {
         return menuDAO.getAll();
     }
 
-    public void delete(Menu menu) {
-        menuDAO.delete(menu);
+    public void delete(Integer id) {
+        menuDAO.delete(id);
     }
 
     public void edit(Menu menu){

@@ -9,7 +9,7 @@ public interface DatabaseDAO<T> {
 
     void add(T t);
 
-    void delete(T t);
+    void delete(Integer id);
 
     void edit(T t);
 }

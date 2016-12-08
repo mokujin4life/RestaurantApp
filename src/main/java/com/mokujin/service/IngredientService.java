@@ -32,8 +32,8 @@ public class IngredientService {
         return ingredientDAO.getAll();
     }
 
-    public void delete(Ingredient ingredient) {
-        ingredientDAO.delete(ingredient);
+    public void delete(Integer id) {
+        ingredientDAO.delete(id);
     }
 
     public void edit(Ingredient ingredient) {

@@ -35,13 +35,16 @@ public class IOrderDAO implements OrderDAO {
     }
 
     @Override
-    public void delete(Order order) {
+    public void delete(Integer id) {
         try {
-            orders.remove(order);
+            for (Order order : orders) {
+                if (order.getId() == id) {
+                    orders.remove(order);
+                }
+            }
         } catch (Exception e) {
-            throw new RuntimeException("no object=" + order + " found");
+            throw new RuntimeException("no object with id=" + id + " found");
         }
-
     }
 
     @Override

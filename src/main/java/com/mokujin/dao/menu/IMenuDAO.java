@@ -35,13 +35,16 @@ public class IMenuDAO implements MenuDAO {
     }
 
     @Override
-    public void delete(Menu menu) {
+    public void delete(Integer id) {
         try {
-            menuList.remove(menu);
+            for (Menu menu : menuList) {
+                if (menu.getId() == id) {
+                    menuList.remove(menu);
+                }
+            }
         } catch (Exception e) {
-            throw new RuntimeException("no object=" + menu + " found");
+            throw new RuntimeException("no object with id=" + id + " found");
         }
-
     }
 
     @Override

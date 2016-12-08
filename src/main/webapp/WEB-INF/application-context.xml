@@ -6,5 +6,13 @@
 
        <bean id="employeeService" class="com.mokujin.service.EmployeeService"/>
 
-       <bean id="employeeDao" class="com.mokujin.dao.employee.IEmployeeDAO"/>
+       <bean id="employeeDAO" class="com.mokujin.dao.employee.IEmployeeDAO"/>
+
+       <bean id="dishService" class="com.mokujin.service.DishService"/>
+
+       <bean id="dishDAO" class="com.mokujin.dao.dish.IDishDAO"/>
+
+       <bean id="ingredientService" class="com.mokujin.service.IngredientService"/>
+
+       <bean id="ingredientDAO" class="com.mokujin.dao.ingredient.IIngredientDAO"/>
 </beans>

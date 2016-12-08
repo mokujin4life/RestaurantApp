@@ -12,15 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Map;
 
-/**
- * Created by Danil on 07.12.16.
- */
 @Controller
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
+    private int id = 0;
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = "/employees", method = RequestMethod.GET)
     public String employees(Map<String, Object> map) {
 
         map.put("employee", new Employee());
@@ -29,18 +27,17 @@ public class EmployeeController {
         return "employee";
     }
 
-    @RequestMapping("/")
-    public String home() {
-        return "redirect:/index";
-    }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/add_employee", method = RequestMethod.POST)
     public String addEmployee(@ModelAttribute("employee") Employee employee,
                               BindingResult result) {
 
+
+        employee.setId(id);
+        id++;
         employeeService.add(employee);
 
-        return "redirect:/index";
+        return "redirect:/employees";
     }
 
     /*@RequestMapping("/delete/{contactId}")
@@ -48,6 +45,13 @@ public class EmployeeController {
 
         employeeService.delete(contactId);
 
-        return "redirect:/index";
-    }*/
+        return "redirect:/index";*/
+
+    @RequestMapping(value = "/delete_employee/{id}", method = RequestMethod.GET)
+    public String deleteContact(@PathVariable("id") Integer id) {
+
+        employeeService.delete(id);
+
+        return "redirect:/employees";
+    }
 }

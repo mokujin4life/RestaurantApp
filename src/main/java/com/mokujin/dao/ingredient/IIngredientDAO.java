@@ -1,6 +1,5 @@
 package com.mokujin.dao.ingredient;
 
-import com.mokujin.models.employee.Employee;
 import com.mokujin.models.ingredient.Ingredient;
 
 import java.util.ArrayList;
@@ -34,13 +33,16 @@ public class IIngredientDAO implements IngredientDAO {
     }
 
     @Override
-    public void delete(Ingredient ingredient) {
+    public void delete(Integer id) {
         try {
-            ingredients.remove(ingredient);
+            for (Ingredient ingredient : ingredients) {
+                if (ingredient.getId() == id) {
+                    ingredients.remove(ingredient);
+                }
+            }
         } catch (Exception e) {
-            throw new RuntimeException("no object=" + ingredient + " found");
+            throw new RuntimeException("no object with id=" + id + " found");
         }
-
     }
 
     @Override
