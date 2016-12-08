@@ -23,7 +23,7 @@
                 <version>2.6</version>
                 <configuration>
                     <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
-                    <warName>RestaurantApp</warName>
+                    <warName>restaurantapp</warName>
                 </configuration>
             </plugin>
         </plugins>
