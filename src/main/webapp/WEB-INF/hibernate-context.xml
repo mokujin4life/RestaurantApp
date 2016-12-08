@@ -7,16 +7,27 @@
        <bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="dataSource">
               <property name="driverClass" value="${jdbc.driver.class}"/>
               <property name="jdbcUrl" value="${jdbc.url}"/>
-              <property name="user" value="${jdbc.user}"/>
-              <property name="password" value="${jdbc.password}"/>
               <property name="minPoolSize" value="${jdbc.min.connections}"/>
               <property name="maxPoolSize" value="${jdbc.max.connections}"/>
               <property name="acquireIncrement" value="${jdbc.acquire.increment}"/>
        </bean>
 
-
+       <bean id = "sessionFactory" class = "org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+              <property name="dataSource" ref="dataSource"/>
+              <property name="packagesToScan" value ="com.mokujin.models"/>
+              <property name="hibernateProperties">
+                     <value>
+                            hibernate.dialect = com.enigmabridge.hibernate.dialect.SQLiteDialect
+                     </value>
+              </property>
+       </bean>
 
        <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
               <property name="location" value="classpath:jdbc.properties"/>
+       </bean>
+
+       <bean id ="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+              <property name="sessionFactory" ref = "sessionFactory"/>
+              <property name="dataSource" ref="dataSource"/>
        </bean>
 </beans>

@@ -1,14 +1,13 @@
 package com.mokujin.dao.dish;
 
 import com.mokujin.models.dish.Dish;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Danil-MAC on 11/28/16.
- */
 
+@Repository
 public class IDishDAO implements DishDAO {
     List<Dish> dishes = new ArrayList<>();
 

@@ -1,13 +1,27 @@
 package com.mokujin.models.employee;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "employee")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Employee {
 
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id")
     private int id;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "phone")
     private String phone;
 
+    @Column(name = "photo")
     private String photo;
 
     public String getName() {

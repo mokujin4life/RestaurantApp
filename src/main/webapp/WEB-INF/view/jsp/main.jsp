@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Danil
@@ -12,9 +13,9 @@
     <title>Welcome, Guest</title>
 </head>
 <body>
-<form action="<c:url value="/employees"/>" method="get">
+<from:form action="employee.jsp" method="get">
   <button type="submit" class="button">Employees</button>
-</form>
+</from:form>
 <form action="<c:url value="/dishes"/>" method="get">
   <button type="submit" class="button">Dishes</button>
 </form>

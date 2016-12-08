@@ -1,16 +1,18 @@
 package com.mokujin.dao.employee;
 
 import com.mokujin.models.employee.Employee;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by mokujin on 29.11.16.
- */
+
+@Repository
 public class IEmployeeDAO implements EmployeeDAO {
 
-    List<Employee> employees = new ArrayList<>();
+    /*List<Employee> employees = new ArrayList<>();
 
     @Override
     public List<Employee> getAll() {
@@ -54,9 +56,14 @@ public class IEmployeeDAO implements EmployeeDAO {
         } catch (Exception e) {
             throw new RuntimeException("no object=" + employee + " found");
         }
-    }
+    }*/
 
-    /*SessionFactory sessionFactory;
+    @Autowired
+    SessionFactory sessionFactory;
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
     public List<Employee> getAll() {
@@ -65,7 +72,7 @@ public class IEmployeeDAO implements EmployeeDAO {
 
     @Override
     public Employee get(Integer id) {
-        return (Employee) sessionFactory.getCurrentSession().get(Employee.class, id);
+        return  sessionFactory.getCurrentSession().get(Employee.class, id);
     }
 
     @Override
@@ -75,16 +82,16 @@ public class IEmployeeDAO implements EmployeeDAO {
 
     @Override
     public void delete(Integer id) {
-        Employee employee = (Employee) sessionFactory.getCurrentSession().get(Employee.class, id);
+        Employee employee = sessionFactory.getCurrentSession().get(Employee.class, id);
         sessionFactory.getCurrentSession().delete(employee);
     }
 
     @Override
     public void edit(Employee employee) {
-        Employee existingEmployee = (Employee) sessionFactory.getCurrentSession().get(Employee.class, employee.getId());
+        Employee existingEmployee = sessionFactory.getCurrentSession().get(Employee.class, employee.getId());
 
         existingEmployee.setName(employee.getName());
 
         sessionFactory.getCurrentSession().save(existingEmployee);
-    }*/
+    }
 }

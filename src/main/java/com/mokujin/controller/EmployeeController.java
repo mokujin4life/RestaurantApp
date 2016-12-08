@@ -16,13 +16,13 @@ import java.util.Map;
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
-    private int id = 0;
 
     @RequestMapping(value = "/employees", method = RequestMethod.GET)
     public String employees(Map<String, Object> map) {
 
         map.put("employee", new Employee());
         map.put("employees", employeeService.getAll());
+
 
         return "employee";
     }
@@ -32,9 +32,6 @@ public class EmployeeController {
     public String addEmployee(@ModelAttribute("employee") Employee employee,
                               BindingResult result) {
 
-
-        employee.setId(id);
-        id++;
         employeeService.add(employee);
 
         return "redirect:/employees";

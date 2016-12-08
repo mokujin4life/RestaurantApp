@@ -6,12 +6,16 @@ import com.mokujin.dao.ingredient.IIngredientDAO;
 import com.mokujin.models.dish.Dish;
 import com.mokujin.models.employee.Employee;
 import com.mokujin.models.ingredient.Ingredient;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by Danil on 05.12.16.
  */
+@Service
+@Transactional
 public class EmployeeService {
     EmployeeDAO employeeDAO = new IEmployeeDAO();
 
