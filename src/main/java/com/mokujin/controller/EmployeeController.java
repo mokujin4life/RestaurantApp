@@ -17,6 +17,10 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    public void setEmployeeService(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
     @RequestMapping(value = "/employees", method = RequestMethod.GET)
     public String employees(Map<String, Object> map) {
 

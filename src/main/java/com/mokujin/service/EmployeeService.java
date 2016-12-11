@@ -6,6 +6,7 @@ import com.mokujin.dao.ingredient.IIngredientDAO;
 import com.mokujin.models.dish.Dish;
 import com.mokujin.models.employee.Employee;
 import com.mokujin.models.ingredient.Ingredient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +18,8 @@ import java.util.List;
 @Service
 @Transactional
 public class EmployeeService {
-    EmployeeDAO employeeDAO = new IEmployeeDAO();
+    @Autowired
+    EmployeeDAO employeeDAO;
 
     public void add(Employee employee) {
         boolean employeeValidation = validateObject(employee);
@@ -54,7 +56,4 @@ public class EmployeeService {
         return id < employeeDAO.getAll().size() && id > 0;
     }
 
-    public void setEmployeeDAO(EmployeeDAO employeeDAO) {
-        this.employeeDAO = employeeDAO;
-    }
 }

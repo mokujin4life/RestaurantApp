@@ -9,70 +9,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Repository
 public class IEmployeeDAO implements EmployeeDAO {
 
-    /*List<Employee> employees = new ArrayList<>();
-
-    @Override
-    public List<Employee> getAll() {
-        return employees;
-    }
-
-    @Override
-    public Employee get(Integer id) {
-        try {
-            return employees.get(id);
-        } catch (Exception e) {
-            throw new RuntimeException("no id=" + id + " found");
-        }
-    }
-
-    @Override
-    public void add(Employee employee) {
-        employees.add(employee);
-        getAll().forEach(System.out::println);
-    }
-
-    @Override
-    public void delete(Integer id) {
-        try {
-            for (Employee employee : employees) {
-                if (employee.getId() == id) {
-                    employees.remove(employee);
-                }
-            }
-        } catch (Exception e) {
-            throw new RuntimeException("no object with id=" + id + " found");
-        }
-
-    }
-
-    @Override
-    public void edit(Employee employee) {
-        try {
-            employees.remove(employee.getId());
-            employees.add(employee.getId(), employee);
-        } catch (Exception e) {
-            throw new RuntimeException("no object=" + employee + " found");
-        }
-    }*/
-
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
 
     @Override
     public List<Employee> getAll() {
-        return sessionFactory.getCurrentSession().createQuery("select * from Employee").list();
+        return sessionFactory.getCurrentSession().createQuery("select e from Employee e order by e.id").list();
     }
 
     @Override
     public Employee get(Integer id) {
-        return  sessionFactory.getCurrentSession().get(Employee.class, id);
+        return sessionFactory.getCurrentSession().get(Employee.class, id);
     }
 
     @Override

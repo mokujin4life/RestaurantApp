@@ -15,7 +15,7 @@ public class Employee {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "name")
+    @Column(name = "employee_name")
     private String name;
 
     @Column(name = "phone")

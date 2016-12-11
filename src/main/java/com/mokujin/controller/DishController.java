@@ -15,7 +15,6 @@ import java.util.Map;
 
 @Controller
 public class DishController {
-    @Autowired
     private DishService dishService;
 
     @RequestMapping(value = "/dishes", method = RequestMethod.GET)
@@ -30,7 +29,7 @@ public class DishController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addDish(@ModelAttribute("dish") Dish dish,
-                              BindingResult result) {
+                          BindingResult result) {
 
         dishService.add(dish);
 
