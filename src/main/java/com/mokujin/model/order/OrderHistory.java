@@ -1,4 +1,4 @@
-package com.mokujin.models.order;
+package com.mokujin.model.order;
 
 import java.util.List;
 

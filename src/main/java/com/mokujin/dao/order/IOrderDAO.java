@@ -1,6 +1,6 @@
 package com.mokujin.dao.order;
 
-import com.mokujin.models.order.Order;
+import com.mokujin.model.order.Order;
 
 import java.util.ArrayList;
 import java.util.List;

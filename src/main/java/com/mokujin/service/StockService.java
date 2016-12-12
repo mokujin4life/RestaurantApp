@@ -2,9 +2,8 @@ package com.mokujin.service;
 
 import com.mokujin.dao.stock.IStockDAO;
 import com.mokujin.dao.stock.StockDAO;
-import com.mokujin.models.dish.Dish;
-import com.mokujin.models.ingredient.Ingredient;
-import com.mokujin.models.stock.Stock;
+import com.mokujin.model.ingredient.Ingredient;
+import com.mokujin.model.stock.Stock;
 
 import java.util.Map;
 import java.util.TreeMap;

@@ -1,11 +1,10 @@
 package com.mokujin.controller;
 
-import com.mokujin.models.employee.Employee;
+import com.mokujin.model.employee.Employee;
 import com.mokujin.service.EmployeeService;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +19,6 @@ import java.util.Map;
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
-
 
 
     public void setEmployeeService(EmployeeService employeeService) {
@@ -48,25 +46,23 @@ public class EmployeeController {
 
 
     @RequestMapping(value = "/delete_employee/{id}", method = RequestMethod.GET)
-    public String deleteContact(@PathVariable("id") Integer id) {
+    public String deleteEmployee(@PathVariable("id") Integer id) {
 
         employeeService.delete(id);
 
         return "redirect:/employees";
     }
 
-    @RequestMapping(value = "/save_image/{id}", method = RequestMethod.POST)
-    public String save(@PathVariable("id") Integer id,
-                       @ModelAttribute("file") MultipartFile file) {
-        if (null != file) {
-            try {
-                Employee employee = employeeService.get(id);
-                byte[] photo = IOUtils.toByteArray(file.getInputStream());
-                employee.setPhoto(photo);
-                employeeService.edit(employee);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    @RequestMapping(value = "/employee_save_image/{id}", method = RequestMethod.POST)
+    public String saveImage(@PathVariable("id") Integer id,
+                            @ModelAttribute("file") MultipartFile file) {
+        try {
+            Employee employee = employeeService.get(id);
+            byte[] photo = IOUtils.toByteArray(file.getInputStream());
+            employee.setPhoto(photo);
+            employeeService.edit(employee);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return "redirect:/employees";
     }

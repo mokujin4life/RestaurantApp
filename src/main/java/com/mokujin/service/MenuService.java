@@ -2,7 +2,7 @@ package com.mokujin.service;
 
 import com.mokujin.dao.menu.IMenuDAO;
 import com.mokujin.dao.menu.MenuDAO;
-import com.mokujin.models.menu.Menu;
+import com.mokujin.model.menu.Menu;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.mokujin.dao.ingredient;
 
-import com.mokujin.models.ingredient.Ingredient;
+import com.mokujin.model.ingredient.Ingredient;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.mokujin.dao.menu;
 
-import com.mokujin.models.menu.Menu;
+import com.mokujin.model.menu.Menu;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,91 +1,43 @@
 package com.mokujin.dao.dish;
 
-import com.mokujin.models.dish.Dish;
+import com.mokujin.model.dish.Dish;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-@Repository
 public class IDishDAO implements DishDAO {
-    List<Dish> dishes = new ArrayList<>();
+
+    @Autowired
+    SessionFactory sessionFactory;
 
     @Override
     public List<Dish> getAll() {
-        return dishes;
+        return sessionFactory.getCurrentSession().createQuery("select d from Dish d order by d.id").list();
     }
 
     @Override
     public Dish get(int id) {
-        try {
-            return dishes.get(id);
-        } catch (Exception e) {
-            throw new RuntimeException("no id=" + id + " found");
-        }
-
+        return sessionFactory.getCurrentSession().get(Dish.class, id);
     }
 
     @Override
-    public void add(Dish dish) {
-        dish.setId(dishes.size());
-        dishes.add(dish);
-        getAll().forEach(System.out::println);
-    }
-
-    @Override
-    public void delete(Integer id) {
-        try {
-            for (Dish dish:dishes){
-                if (dish.getId()==id){
-                    dishes.remove(dish);
-                }
-            }
-        } catch (Exception e) {
-            throw new RuntimeException("no object with id=" + id + " found");
-        }
-
-    }
-
-    @Override
-    public void edit(Dish dish) {
-        try {
-            dishes.remove(dish.getId());
-            dishes.add(dish.getId(), dish);
-        } catch (Exception e) {
-            throw new RuntimeException("no object=" + dish + " found");
-        }
-    }
-
-    /*SessionFactory sessionFactory;
-
-    @Override
-    public List<Dish> getAll() {
-        return sessionFactory.getCurrentSession().createQuery("select * from Dish").list();
-    }
-
-    public Dish get(Integer id) {
-        return (Dish) sessionFactory.getCurrentSession().get(Dish.class, id);
-    }
-
     public void add(Dish dish) {
         sessionFactory.getCurrentSession().save(dish);
     }
 
+    @Override
     public void delete(Integer id) {
-        Dish dish = (Dish)sessionFactory.getCurrentSession().get(Dish.class, id);
+        Dish dish = sessionFactory.getCurrentSession().get(Dish.class, id);
         sessionFactory.getCurrentSession().delete(dish);
     }
 
+    @Override
     public void edit(Dish dish) {
-        Dish existingDish = (Dish) sessionFactory.getCurrentSession().get(Dish.class, dish.getId());
-
-        existingDish.setIngredientsMap(dish.getIngredientsMap());
-        existingDish.setName(existingDish.getName());
-        existingDish.setPrice(existingDish.getPrice());
-        existingDish.setWeight(existingDish.getWeight());
-
-        sessionFactory.getCurrentSession().save(existingDish);
-    }*/
+        sessionFactory.getCurrentSession().update(dish);
+    }
 
 }

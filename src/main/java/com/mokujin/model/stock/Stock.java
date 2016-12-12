@@ -1,6 +1,6 @@
-package com.mokujin.models.stock;
+package com.mokujin.model.stock;
 
-import com.mokujin.models.ingredient.Ingredient;
+import com.mokujin.model.ingredient.Ingredient;
 
 import java.util.HashMap;
 import java.util.Map;

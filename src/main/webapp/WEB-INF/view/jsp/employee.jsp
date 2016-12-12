@@ -1,13 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Danil
-  Date: 08.12.16
-  Time: 0:45
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -27,8 +21,11 @@
             <c:if test="${not empty employee.photo}">
                 <td><img src="<c:url value="/img/photo?id=${employee.id}"/>" alt="photo" height="100" width="100"/></td>
             </c:if>
-            <form action="save_image/${employee.id}" enctype="multipart/form-data" method="post">
-                <td><input type="file" accept=".jpg" name="photo"/>
+            <c:if test="${empty employee.photo}">
+                <td><img src="https://u.o0bc.com/avatars/no-user-image.gif" alt="photo" height="100" width="100"/></td>
+            </c:if>
+            <form action="employee_save_image/${employee.id}" enctype="multipart/form-data" method="post">
+                <td><input type="file" accept=".jpg" name="file"/>
                     <input type="submit" class="button" value="Add"/>
             </form>
             <td><a href="delete_employee/${employee.id}">Delete</a></td>
@@ -49,6 +46,9 @@
         </tr>
     </table>
     <input type="submit" class="button" id="2" value="Add"/>
+</form>
+<form action="<c:url value="/"/>" method="get">
+    <input type="submit" class="button" value="Back to Main Menu"/>
 </form>
 </body>
 </html>

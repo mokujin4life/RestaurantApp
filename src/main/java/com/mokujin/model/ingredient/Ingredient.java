@@ -1,4 +1,5 @@
-package com.mokujin.models.ingredient;
+package com.mokujin.model.ingredient;
+
 
 public class Ingredient {
 

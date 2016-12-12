@@ -17,7 +17,7 @@
 
        <bean id = "sessionFactory" class = "org.springframework.orm.hibernate5.LocalSessionFactoryBean" autowire="byName">
               <property name="dataSource" ref="dataSource"/>
-              <property name="packagesToScan" value ="com.mokujin.models.employee"/>
+              <property name="packagesToScan" value ="com.mokujin.model.employee"/>
               <property name="hibernateProperties">
                      <value>
                             hibernate.dialect = org.hibernate.dialect.PostgreSQL9Dialect

@@ -1,6 +1,6 @@
 package com.mokujin.dao.order.history;
 
-import com.mokujin.models.order.OrderHistory;
+import com.mokujin.model.order.OrderHistory;
 
 /**
  * Created by Danil on 05.12.16.

@@ -1,20 +1,36 @@
-package com.mokujin.models.dish;
+package com.mokujin.model.dish;
 
-import com.mokujin.models.ingredient.Ingredient;
+import com.mokujin.model.ingredient.Ingredient;
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
 import java.util.List;
 
-
+@Entity
+@Table(name = "dish")
 public class Dish {
 
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id")
     private int id;
 
+    @Column(name = "dish_name")
     private String name;
 
+    @Column(name = "weight")
     private int weight;
 
+    @Column(name = "price")
     private int price;
 
+    @Column(name = "photo")
+    private byte[] photo;
+
+    @ElementCollection
+    @CollectionTable(name="ingredient", joinColumns=@JoinColumn(name="dish_id"))
+    @Column(name="ingredient_name")
     private List<Ingredient> ingredients;
 
     public String getName() {
@@ -59,6 +75,14 @@ public class Dish {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
     }
 
     @Override

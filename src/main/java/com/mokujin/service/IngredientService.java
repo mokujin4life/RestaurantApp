@@ -2,7 +2,7 @@ package com.mokujin.service;
 
 import com.mokujin.dao.ingredient.IIngredientDAO;
 import com.mokujin.dao.ingredient.IngredientDAO;
-import com.mokujin.models.ingredient.Ingredient;
+import com.mokujin.model.ingredient.Ingredient;
 
 import java.util.List;
 

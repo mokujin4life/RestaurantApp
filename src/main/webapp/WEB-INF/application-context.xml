@@ -5,7 +5,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
 >
 
-       <!-- Включаем опцию использования конфигурационных аннотаций (@Annotation-based configuration)-->
        <context:annotation-config />
 
        <bean id="multipartResolver"
@@ -13,25 +12,13 @@
               <property name="maxUploadSize" value="100000" />
        </bean>
 
-       <!-- Определяем папки, в которых будем автоматически искать бины-компоненты (@Component, @Service)  -->
-      <!-- <context:component-scan base-package="com.mokujin.dao" />-->
        <context:component-scan base-package="com.mokujin.service" />
 
        <bean id="employeeDAO" class="com.mokujin.dao.employee.IEmployeeDAO"/>
 
-       <!--<bean id="employeeService" class="com.mokujin.service.EmployeeService">
-              <property name="employeeDAO" ref="employeeDAO"/>
-       </bean>
-
-       <bean id="employeeDAO" class="com.mokujin.dao.employee.IEmployeeDAO">
-              <property name="sessionFactory" ref="sessionFactory"/>
-       </bean>
-
-       <bean id="dishService" class="com.mokujin.service.DishService"/>
-
        <bean id="dishDAO" class="com.mokujin.dao.dish.IDishDAO"/>
 
-       <bean id="ingredientService" class="com.mokujin.service.IngredientService"/>
+       <bean id="ingredientDAO" class="com.mokujin.dao.ingredient.IIngredientDAO"/>
 
-       <bean id="ingredientDAO" class="com.mokujin.dao.ingredient.IIngredientDAO"/>-->
+
 </beans>

@@ -1,7 +1,7 @@
 package com.mokujin.dao.ingredient;
 
 import com.mokujin.dao.DatabaseDAO;
-import com.mokujin.models.ingredient.Ingredient;
+import com.mokujin.model.ingredient.Ingredient;
 
 /**
  * Created by Danil on 05.12.16.

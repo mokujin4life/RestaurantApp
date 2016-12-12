@@ -2,7 +2,7 @@ package com.mokujin.service;
 
 import com.mokujin.dao.order.IOrderDAO;
 import com.mokujin.dao.order.OrderDAO;
-import com.mokujin.models.order.Order;
+import com.mokujin.model.order.Order;
 
 import java.util.List;
 

@@ -3,9 +3,9 @@ package com.mokujin.service;
 
 import com.mokujin.dao.order.history.IOrderHistoryDAO;
 import com.mokujin.dao.order.history.OrderHistoryDAO;
-import com.mokujin.models.employee.Waiter;
-import com.mokujin.models.order.Order;
-import com.mokujin.models.order.OrderHistory;
+import com.mokujin.model.employee.Waiter;
+import com.mokujin.model.order.Order;
+import com.mokujin.model.order.OrderHistory;
 
 import java.util.ArrayList;
 import java.util.Comparator;

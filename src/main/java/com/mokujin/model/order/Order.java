@@ -1,8 +1,8 @@
-package com.mokujin.models.order;
+package com.mokujin.model.order;
 
 
-import com.mokujin.models.dish.Dish;
-import com.mokujin.models.employee.Waiter;
+import com.mokujin.model.dish.Dish;
+import com.mokujin.model.employee.Waiter;
 
 
 import java.util.Date;

@@ -1,4 +1,4 @@
-package com.mokujin.models.employee;
+package com.mokujin.model.employee;
 
 public class Waiter extends Employee {
     @Override

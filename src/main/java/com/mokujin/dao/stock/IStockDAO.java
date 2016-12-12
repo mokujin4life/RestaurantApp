@@ -1,6 +1,6 @@
 package com.mokujin.dao.stock;
 
-import com.mokujin.models.stock.Stock;
+import com.mokujin.model.stock.Stock;
 
 /**
  * Created by Danil on 05.12.16.

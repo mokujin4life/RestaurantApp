@@ -2,28 +2,36 @@ package com.mokujin.service;
 
 import com.mokujin.dao.dish.DishDAO;
 import com.mokujin.dao.dish.IDishDAO;
-import com.mokujin.models.dish.Dish;
+import com.mokujin.model.dish.Dish;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
+@Transactional
 public class DishService {
 
-    DishDAO dishDAO = new IDishDAO();
+    @Autowired
+    DishDAO dishDAO;
 
     public void add(Dish dish) {
-        boolean ingredientAppearance = validateIngredientAppearance(dish);
+        /*boolean ingredientAppearance = validateIngredientAppearance(dish);
         boolean dishValidation = validateObject(dish);
         if (ingredientAppearance && dishValidation) {
             dishDAO.add(dish);
-        }
+        }*/
+        dishDAO.add(dish);
     }
 
-    public void get(Integer id) {
-        if (validateId(id)) {
+    public Dish get(int id) {
+        /*if (validateId(id)) {
             dishDAO.get(id);
         } else {
             throw new RuntimeException();
-        }
+        }*/
+        return dishDAO.get(id);
     }
 
 

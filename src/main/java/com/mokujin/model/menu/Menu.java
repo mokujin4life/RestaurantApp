@@ -1,6 +1,6 @@
-package com.mokujin.models.menu;
+package com.mokujin.model.menu;
 
-import com.mokujin.models.dish.Dish;
+import com.mokujin.model.dish.Dish;
 
 import java.util.List;
 
