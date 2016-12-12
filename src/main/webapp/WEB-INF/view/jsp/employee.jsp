@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Danil
@@ -18,14 +20,20 @@
         <th>Phone</th>
         <th>Photo</th>
     </tr>
-        <c:forEach var="employee" items="${employees}">
+    <c:forEach var="employee" items="${employees}">
         <tr>
             <td><c:out value="${employee.name}"/></td>
             <td><c:out value="${employee.phone}"/></td>
-            <td><c:out value="${employee.photo}"/></td>
+            <c:if test="${not empty employee.photo}">
+                <td><img src="<c:url value="/img/photo?id=${employee.id}"/>" alt="photo" height="100" width="100"/></td>
+            </c:if>
+            <form action="save_image/${employee.id}" enctype="multipart/form-data" method="post">
+                <td><input type="file" accept=".jpg" name="photo"/>
+                    <input type="submit" class="button" value="Add"/>
+            </form>
             <td><a href="delete_employee/${employee.id}">Delete</a></td>
         </tr>
-        </c:forEach>
+    </c:forEach>
 </table>
 
 
@@ -38,10 +46,6 @@
         <tr>
             <td>Employee Phone:</td>
             <td><input type="text" name="phone"/></td>
-        </tr>
-        <tr>
-            <td>Employee Photo:</td>
-            <td><input type="text" name="photo"/></td>
         </tr>
     </table>
     <input type="submit" class="button" id="2" value="Add"/>

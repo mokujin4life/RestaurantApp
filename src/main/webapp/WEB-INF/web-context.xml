@@ -20,5 +20,5 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-  <!--  <mvc:resources mapping="/img/**" location="WEB-INF/view/img"/>-->
+    <mvc:resources mapping="/img/**" location="WEB-INF/view/img"/>
 </beans>

@@ -17,7 +17,7 @@ public class IIngredientDAO implements IngredientDAO {
     }
 
     @Override
-    public Ingredient get(Integer id) {
+    public Ingredient get(int id) {
         try {
             return ingredients.get(id);
         } catch (Exception e) {

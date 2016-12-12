@@ -19,7 +19,7 @@ public class IOrderDAO implements OrderDAO {
     }
 
     @Override
-    public Order get(Integer id) {
+    public Order get(int id) {
         try {
             return orders.get(id);
         } catch (Exception e) {

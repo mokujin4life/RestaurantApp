@@ -22,7 +22,7 @@ public class Employee {
     private String phone;
 
     @Column(name = "photo")
-    private String photo;
+    private byte[] photo;
 
     public String getName() {
         return name;
@@ -40,11 +40,11 @@ public class Employee {
         this.phone = phone;
     }
 
-    public String getPhoto() {
+    public byte[] getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(byte[] photo) {
         this.photo = photo;
     }
 
@@ -52,9 +52,6 @@ public class Employee {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @Override
     public String toString() {

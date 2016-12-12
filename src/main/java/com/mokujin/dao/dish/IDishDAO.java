@@ -17,7 +17,7 @@ public class IDishDAO implements DishDAO {
     }
 
     @Override
-    public Dish get(Integer id) {
+    public Dish get(int id) {
         try {
             return dishes.get(id);
         } catch (Exception e) {

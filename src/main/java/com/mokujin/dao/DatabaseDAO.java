@@ -5,7 +5,7 @@ import java.util.List;
 public interface DatabaseDAO<T> {
     List<T> getAll();
 
-    T get(Integer id);
+    T get(int id);
 
     void add(T t);
 

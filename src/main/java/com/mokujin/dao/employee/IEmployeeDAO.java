@@ -3,9 +3,9 @@ package com.mokujin.dao.employee;
 import com.mokujin.models.employee.Employee;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,8 +20,9 @@ public class IEmployeeDAO implements EmployeeDAO {
         return sessionFactory.getCurrentSession().createQuery("select e from Employee e order by e.id").list();
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public Employee get(Integer id) {
+    public Employee get(int id) {
         return sessionFactory.getCurrentSession().get(Employee.class, id);
     }
 
@@ -41,6 +42,8 @@ public class IEmployeeDAO implements EmployeeDAO {
         Employee existingEmployee = sessionFactory.getCurrentSession().get(Employee.class, employee.getId());
 
         existingEmployee.setName(employee.getName());
+        existingEmployee.setPhone(employee.getPhone());
+        existingEmployee.setPhoto(employee.getPhoto());
 
         sessionFactory.getCurrentSession().save(existingEmployee);
     }

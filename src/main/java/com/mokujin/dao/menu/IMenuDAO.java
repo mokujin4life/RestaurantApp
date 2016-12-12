@@ -19,7 +19,7 @@ public class IMenuDAO implements MenuDAO {
     }
 
     @Override
-    public Menu get(Integer id) {
+    public Menu get(int id) {
         try {
             return menuList.get(id);
         } catch (Exception e) {

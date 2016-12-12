@@ -8,13 +8,11 @@ import com.mokujin.models.employee.Employee;
 import com.mokujin.models.ingredient.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created by Danil on 05.12.16.
- */
 @Service
 @Transactional
 public class EmployeeService {
@@ -28,9 +26,9 @@ public class EmployeeService {
         }
     }
 
-    public void get(Integer id) {
+    public Employee get(int id) {
         if (validateId(id)) {
-            employeeDAO.get(id);
+            return employeeDAO.get(id);
         } else {
             throw new RuntimeException();
         }
@@ -52,7 +50,7 @@ public class EmployeeService {
         return employee != null;
     }
 
-    private boolean validateId(Integer id) {
+    private boolean validateId(int id) {
         return id < employeeDAO.getAll().size() && id > 0;
     }
 
