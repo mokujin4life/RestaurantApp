@@ -1,12 +1,10 @@
 package com.mokujin.controller;
 
 import com.mokujin.model.dish.Dish;
-import com.mokujin.model.employee.Employee;
 import com.mokujin.service.DishService;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,12 +61,12 @@ public class DishController {
     }
 
     @RequestMapping(value = "/update_dish/{id}", method = RequestMethod.POST)
-    public String updateEditedEmployee(@ModelAttribute("dish") Dish dish,
+    public String updateEditedDish(@ModelAttribute("dish") Dish dish,
                                        @ModelAttribute("file") MultipartFile file,
                                        @PathVariable("id") Integer id) {
         Dish existingDish = dishService.get(id);
-        if (!Objects.equals(dish.getName(), "")) {
-            existingDish.setName(dish.getName());
+        if (!Objects.equals(dish.getTitle(), "")) {
+            existingDish.setTitle(dish.getTitle());
         }
         if (!Objects.equals(dish.getPrice(), "")) {
             existingDish.setPrice(dish.getPrice());

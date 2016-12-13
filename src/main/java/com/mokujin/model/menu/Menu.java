@@ -1,23 +1,35 @@
 package com.mokujin.model.menu;
 
 import com.mokujin.model.dish.Dish;
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "menu")
 public class Menu {
 
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id")
     private int id;
 
-    private String name;
+    @Column(name = "title")
+    private String title;
 
+    @ElementCollection
+    @CollectionTable(name="dish", joinColumns=@JoinColumn(name="id"))
+    @Column(name="dish_name")
     private List<Dish> dishList;
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public List<Dish> getDishList() {
@@ -40,7 +52,7 @@ public class Menu {
     public String toString() {
         return "Menu{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", title='" + title + '\'' +
                 ", dishList=" + dishList +
                 '}';
     }

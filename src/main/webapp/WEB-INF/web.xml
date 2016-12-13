@@ -4,17 +4,17 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
 
     <servlet>
-        <servlet-name>Dispatcher</servlet-name>
+        <servlet-title>Dispatcher</servlet-title>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
-            <param-name>contextConfigLocation</param-name>
+            <param-title>contextConfigLocation</param-title>
             <param-value>WEB-INF/web-context.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>Dispatcher</servlet-name>
+        <servlet-title>Dispatcher</servlet-title>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
@@ -23,7 +23,7 @@
     </listener>
 
     <context-param>
-        <param-name>contextConfigLocation</param-name>
+        <param-title>contextConfigLocation</param-title>
         <param-value>
             WEB-INF/application-context.xml
             WEB-INF/hibernate-context.xml

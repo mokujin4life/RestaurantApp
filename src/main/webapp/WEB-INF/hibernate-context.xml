@@ -6,19 +6,19 @@
        <tx:annotation-driven transaction-manager="txManager" proxy-target-class="true"/>
 
        <bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="dataSource">
-              <property name="driverClass" value="${jdbc.driver.class}"/>
-              <property name="jdbcUrl" value="${jdbc.url}"/>
-              <property name="user" value="${jdbc.user}"/>
-              <property name="password" value="${jdbc.password}"/>
-              <property name="minPoolSize" value="${jdbc.min.connections}"/>
-              <property name="maxPoolSize" value="${jdbc.max.connections}"/>
-              <property name="acquireIncrement" value="${jdbc.acquire.increment}"/>
+              <property title="driverClass" value="${jdbc.driver.class}"/>
+              <property title="jdbcUrl" value="${jdbc.url}"/>
+              <property title="user" value="${jdbc.user}"/>
+              <property title="password" value="${jdbc.password}"/>
+              <property title="minPoolSize" value="${jdbc.min.connections}"/>
+              <property title="maxPoolSize" value="${jdbc.max.connections}"/>
+              <property title="acquireIncrement" value="${jdbc.acquire.increment}"/>
        </bean>
 
        <bean id = "sessionFactory" class = "org.springframework.orm.hibernate5.LocalSessionFactoryBean" autowire="byName">
-              <property name="dataSource" ref="dataSource"/>
-              <property name="packagesToScan" value ="com.mokujin.model.employee"/>
-              <property name="hibernateProperties">
+              <property title="dataSource" ref="dataSource"/>
+              <property title="packagesToScan" value ="com.mokujin.model.employee"/>
+              <property title="hibernateProperties">
                      <value>
                             hibernate.dialect = org.hibernate.dialect.PostgreSQL9Dialect
                      </value>
@@ -26,11 +26,11 @@
        </bean>
 
        <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-              <property name="location" value="classpath:jdbc.properties"/>
+              <property title="location" value="classpath:jdbc.properties"/>
        </bean>
 
        <bean id ="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-              <property name="sessionFactory" ref = "sessionFactory"/>
-              <property name="dataSource" ref="dataSource"/>
+              <property title="sessionFactory" ref = "sessionFactory"/>
+              <property title="dataSource" ref="dataSource"/>
        </bean>
 </beans>

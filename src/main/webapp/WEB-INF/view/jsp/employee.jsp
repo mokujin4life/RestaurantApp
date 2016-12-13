@@ -18,7 +18,7 @@
         <tr>
             <td>
                 <a href="edit_employee/${employee.id}">
-                    <c:out value="${employee.name}"/>
+                    <c:out value="${employee.title}"/>
                 </a>
             </td>
             <td><c:out value="${employee.phone}"/></td>
@@ -39,15 +39,15 @@
     <table class="center">
         <tr>
             <td>Employee Name:</td>
-            <td><input type="text" name="name"></td>
+            <td><input type="text" title="title"></td>
         </tr>
         <tr>
             <td>Employee Phone:</td>
-            <td><input type="text" name="phone"/></td>
+            <td><input type="text" title="phone"/></td>
         </tr>
         <tr>
             <td>Employee Photo:</td>
-            <td><input type="file" accept=".jpg" name="file"/></td>
+            <td><input type="file" accept=".jpg" title="file"/></td>
         </tr>
     </table>
     <input type="submit" class="button" id="2" value="Add"/>

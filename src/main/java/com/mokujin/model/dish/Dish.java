@@ -16,8 +16,8 @@ public class Dish {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "dish_name")
-    private String name;
+    @Column(name = "title")
+    private String title;
 
     @Column(name = "weight")
     private int weight;
@@ -33,12 +33,12 @@ public class Dish {
     @Column(name="ingredient_name")
     private List<Ingredient> ingredients;
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getWeight() {
@@ -89,7 +89,7 @@ public class Dish {
     public String toString() {
         return "Dish{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", title='" + title + '\'' +
                 ", weight=" + weight +
                 ", price=" + price +
                 ", ingredients=" + ingredients +

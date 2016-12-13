@@ -16,7 +16,7 @@
     </tr>
     <c:forEach var="dish" items="${dishes}">
         <tr>
-            <td><c:out value="${dish.name}"/></td>
+            <td><c:out value="${dish.title}"/></td>
             <td><c:out value="${dish.weight}"/></td>
             <td><c:out value="${dish.price}"/></td>
 
@@ -27,7 +27,7 @@
                 <td><img src="http://www.finecooking.com/images/no_image_ld.jpg" alt="photo" height="100" width="100"/></td>
             </c:if>
             <form action="dish_save_image/${dish.id}" enctype="multipart/form-data" method="post">
-                <td><input type="file" accept=".jpg" name="file"/>
+                <td><input type="file" accept=".jpg" title="file"/>
                     <input type="submit" class="button" value="Add"/>
             </form>
             <td><a href="delete_dish/${dish.id}">Delete</a></td>
@@ -40,15 +40,15 @@
     <table class="center">
         <tr>
             <td>Dish Title:</td>
-            <td><input type="text" name="title"></td>
+            <td><input type="text" title="title"></td>
         </tr>
         <tr>
             <td>Dish Weight:</td>
-            <td><input type="text" name="phone"/></td>
+            <td><input type="text" title="phone"/></td>
         </tr>
         <tr>
             <td>Dish Price:</td>
-            <td><input type="text" name="phone"/></td>
+            <td><input type="text" title="phone"/></td>
         </tr>
     </table>
     <input type="submit" class="button" id="2" value="Add"/>

@@ -3,21 +3,36 @@ package com.mokujin.model.order;
 
 import com.mokujin.model.dish.Dish;
 import com.mokujin.model.employee.Waiter;
+import com.sun.xml.internal.bind.v2.TODO;
+import org.hibernate.annotations.GenericGenerator;
 
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+@Entity
+@Table(name = "order")
 public class Order {
 
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id")
     private int id;
 
+    // TODO связать поле с атрибутом БД (тип - дата)
     private Date date;
 
+    // TODO связать поле с атрибутом БД (тип - официант)
     private Waiter waiter;
 
+    @Column(name = "table_number")
     private int tableNumber;
 
+    @ElementCollection
+    @CollectionTable(name="dish", joinColumns=@JoinColumn(name="id"))
+    @Column(name="dish_name")
     private List<Dish> orderedDishes;
 
     public Date getDate() {

@@ -17,15 +17,15 @@
     <table class="center">
         <tr>
             <td>New Name:</td>
-            <td><input type="text" name="name"></td>
+            <td><input type="text" title="title"></td>
         </tr>
         <tr>
             <td>New Phone:</td>
-            <td><input type="text" name="phone"/></td>
+            <td><input type="text" title="phone"/></td>
         </tr>
         <tr>
             <td>New Photo:</td>
-            <td><input type="file" accept=".jpg" name="file"/></td>
+            <td><input type="file" accept=".jpg" title="file"/></td>
         </tr>
     </table>
     <input type="submit" class="button" id="2" value="Change"/>

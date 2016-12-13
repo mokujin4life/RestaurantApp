@@ -1,18 +1,28 @@
 package com.mokujin.model.ingredient;
 
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "ingredient")
 public class Ingredient {
 
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id")
     private int id;
 
-    private String name;
+    @Column(name = "title")
+    private String title;
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getId() {
@@ -22,7 +32,7 @@ public class Ingredient {
     @Override
     public String toString() {
         return "Ingredient{" +
-                "name='" + name + '\'' +
+                "title='" + title + '\'' +
                 '}';
     }
 
@@ -33,12 +43,12 @@ public class Ingredient {
 
         Ingredient that = (Ingredient) o;
 
-        return !(name != null ? !name.equals(that.name) : that.name != null);
+        return !(title != null ? !title.equals(that.title) : that.title != null);
 
     }
 
     @Override
     public int hashCode() {
-        return name != null ? name.hashCode() : 0;
+        return title != null ? title.hashCode() : 0;
     }
 }
