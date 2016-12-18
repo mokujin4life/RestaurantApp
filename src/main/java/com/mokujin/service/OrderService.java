@@ -1,32 +1,38 @@
 package com.mokujin.service;
 
-import com.mokujin.dao.order.IOrderDAO;
 import com.mokujin.dao.order.OrderDAO;
 import com.mokujin.model.order.Order;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created by Danil on 05.12.16.
- */
+@Service
+@Transactional
 public class OrderService {
-    OrderDAO orderDAO = new IOrderDAO();
+    @Autowired
+    OrderDAO orderDAO;
 
     public void add(Order order) {
-        boolean dishesAppearance = validateDishesAppearance(order);
+        /*boolean dishesAppearance = validateDishesAppearance(order);
         boolean orderValidation = validateObject(order);
         if (dishesAppearance && orderValidation) {
             validateDishAppearance(order);
             orderDAO.add(order);
-        }
+        }*/
+        orderDAO.add(order);
+
     }
 
     public void get(Integer id) {
-        if (validateId(id)) {
+       /* if (validateId(id)) {
             orderDAO.get(id);
         } else {
             throw new RuntimeException();
-        }
+        }*/
+        orderDAO.get(id);
+
     }
 
     public List<Order> getAll() {
@@ -37,11 +43,11 @@ public class OrderService {
         orderDAO.delete(id);
     }
 
-    public void edit(Order order){
+    public void edit(Order order) {
         orderDAO.edit(order);
     }
 
-    private void validateDishAppearance(Order order){
+    /*private void validateDishAppearance(Order order){
         if (order.getOrderedDishes().size()==0){
             throw new RuntimeException();
         }
@@ -56,5 +62,5 @@ public class OrderService {
 
     private boolean validateId(Integer id) {
         return id < orderDAO.getAll().size() && id > 0;
-    }
+    }*/
 }

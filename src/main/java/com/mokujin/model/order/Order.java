@@ -9,6 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 @Entity
@@ -21,10 +22,10 @@ public class Order {
     @Column(name = "id")
     private int id;
 
-    // TODO связать поле с атрибутом БД (тип - дата)
-    private Date date;
+    @Column(name = "date")
+    private GregorianCalendar date;
 
-    // TODO связать поле с атрибутом БД (тип - официант)
+    @JoinColumn(name = "id")
     private Waiter waiter;
 
     @Column(name = "table_number")
@@ -35,11 +36,11 @@ public class Order {
     @Column(name="dish_name")
     private List<Dish> orderedDishes;
 
-    public Date getDate() {
+    public GregorianCalendar getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(GregorianCalendar date) {
         this.date = date;
     }
 

@@ -5,20 +5,26 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
 >
 
-       <context:annotation-config />
+    <context:annotation-config/>
 
-       <bean id="multipartResolver"
-             class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-              <property title="maxUploadSize" value="100000" />
-       </bean>
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="100000"/>
+    </bean>
 
-       <context:component-scan base-package="com.mokujin.service" />
+    <context:component-scan base-package="com.mokujin.service"/>
 
-       <bean id="employeeDAO" class="com.mokujin.dao.employee.IEmployeeDAO"/>
+    <bean id="employeeDAO" class="com.mokujin.dao.employee.IEmployeeDAO"/>
 
-       <bean id="dishDAO" class="com.mokujin.dao.dish.IDishDAO"/>
+    <bean id="dishDAO" class="com.mokujin.dao.dish.IDishDAO"/>
 
-       <bean id="ingredientDAO" class="com.mokujin.dao.ingredient.IIngredientDAO"/>
+    <bean id="ingredientDAO" class="com.mokujin.dao.ingredient.IIngredientDAO"/>
+
+    <bean id="menuDAO" class="com.mokujin.dao.menu.IMenuDAO"/>
+
+    <bean id="orderDAO" class="com.mokujin.dao.order.IOrderDAO"/>
+
+    <bean id="stockDAO" class="com.mokujin.dao.stock.IStockDAO"/>
 
 
 </beans>

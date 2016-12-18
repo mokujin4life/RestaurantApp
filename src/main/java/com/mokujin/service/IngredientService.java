@@ -1,31 +1,36 @@
 package com.mokujin.service;
 
-import com.mokujin.dao.ingredient.IIngredientDAO;
 import com.mokujin.dao.ingredient.IngredientDAO;
 import com.mokujin.model.ingredient.Ingredient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created by Danil on 05.12.16.
- */
+@Service
+@Transactional
 public class IngredientService {
 
-    IngredientDAO ingredientDAO = new IIngredientDAO();
+    @Autowired
+    IngredientDAO ingredientDAO;
 
     public void add(Ingredient ingredient) {
-        boolean ingredientValidation = validateObject(ingredient);
+       /* boolean ingredientValidation = validateObject(ingredient);
         if (ingredientValidation) {
             ingredientDAO.add(ingredient);
-        }
+        }*/
+        ingredientDAO.add(ingredient);
+
     }
 
-    public void get(Integer id) {
-        if (validateId(id)) {
+    public Ingredient get(Integer id) {
+       /* if (validateId(id)) {
             ingredientDAO.get(id);
         } else {
             throw new RuntimeException();
-        }
+        }*/
+        return ingredientDAO.get(id);
     }
 
     public List<Ingredient> getAll() {
@@ -41,12 +46,12 @@ public class IngredientService {
     }
 
 
-    private boolean validateObject(Ingredient ingredient) {
+    /*private boolean validateObject(Ingredient ingredient) {
         return ingredient != null;
     }
 
     private boolean validateId(Integer id) {
         return id < ingredientDAO.getAll().size() && id > 0;
     }
-
+*/
 }

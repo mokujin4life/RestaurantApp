@@ -1,12 +1,7 @@
 package com.mokujin.dao.stock;
 
-import com.mokujin.model.stock.Stock;
+import com.mokujin.dao.DatabaseDAO;
+import com.mokujin.model.stock.StockIngredient;
 
-/**
- * Created by Danil on 05.12.16.
- */
-public interface StockDAO {
-    Stock getStock();
-
-    void updateStock(Stock stock);
+public interface StockDAO extends DatabaseDAO<StockIngredient> {
 }

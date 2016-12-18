@@ -1,57 +1,39 @@
 package com.mokujin.dao.ingredient;
 
 import com.mokujin.model.ingredient.Ingredient;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Danil on 05.12.16.
- */
 public class IIngredientDAO implements IngredientDAO {
-    List<Ingredient> ingredients = new ArrayList<>();
+    @Autowired
+    SessionFactory sessionFactory;
 
     @Override
     public List<Ingredient> getAll() {
-        return ingredients;
+        return sessionFactory.getCurrentSession().createQuery("select i from Ingredient i order by i.id").list();
     }
 
     @Override
     public Ingredient get(int id) {
-        try {
-            return ingredients.get(id);
-        } catch (Exception e) {
-            throw new RuntimeException("no id=" + id + " found");
-        }
-
+        return sessionFactory.getCurrentSession().get(Ingredient.class, id);
     }
 
     @Override
     public void add(Ingredient ingredient) {
-        ingredients.add(ingredient);
-        getAll().forEach(System.out::println);
+        sessionFactory.getCurrentSession().save(ingredient);
     }
 
     @Override
     public void delete(Integer id) {
-        try {
-            for (Ingredient ingredient : ingredients) {
-                if (ingredient.getId() == id) {
-                    ingredients.remove(ingredient);
-                }
-            }
-        } catch (Exception e) {
-            throw new RuntimeException("no object with id=" + id + " found");
-        }
+        Ingredient ingredient = sessionFactory.getCurrentSession().get(Ingredient.class, id);
+        sessionFactory.getCurrentSession().delete(ingredient);
     }
 
     @Override
     public void edit(Ingredient ingredient) {
-        try {
-            ingredients.remove(ingredient.getId());
-            ingredients.add(ingredient.getId(), ingredient);
-        } catch (Exception e) {
-            throw new RuntimeException("no object=" + ingredient + " found");
-        }
+        sessionFactory.getCurrentSession().update(ingredient);
     }
+
 }

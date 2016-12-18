@@ -1,46 +1,36 @@
 package com.mokujin.service;
 
-import com.mokujin.dao.stock.IStockDAO;
 import com.mokujin.dao.stock.StockDAO;
-import com.mokujin.model.ingredient.Ingredient;
-import com.mokujin.model.stock.Stock;
+import com.mokujin.model.stock.StockIngredient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Map;
-import java.util.TreeMap;
-
-/**
- * Created by Danil on 05.12.16.
- */
+@Service
+@Transactional
 public class StockService {
-    StockDAO stockDAO = new IStockDAO();
+    @Autowired
+    StockDAO stockDAO;
 
-    public Map<Ingredient, Integer> getIngredients() {
-        return stockDAO.getStock().getAvailableIngredients();
+
+    public void setIngredient(StockIngredient stockIngredient) {
+        stockDAO.add(stockIngredient);
     }
 
 
-    public void setIngredient(Ingredient ingredient, Integer quantity) {
-        if (validateIngredient(ingredient, quantity)) {
-            Stock stock = stockDAO.getStock();
-            stock.addNewIngredient(ingredient, quantity);
-            stockDAO.updateStock(stock);
-            getIngredients().forEach((k, v) -> System.out.println(k + " number = " + v));
-        }
+    public void deleteIngredient(Integer id) {
+        stockDAO.delete(id);
     }
 
-
-    public void deleteIngredient(Ingredient ingredient) {
-        try {
-            Stock stock = stockDAO.getStock();
-            stock.getAvailableIngredients().remove(ingredient);
-            stockDAO.updateStock(stock);
-        } catch (Exception e) {
-            throw new RuntimeException("no object " + ingredient + " found");
-        }
+    public StockIngredient getIngredient(Integer id) {
+        return stockDAO.get(id);
     }
 
+    public void editIngredient(StockIngredient ingredient) {
+        stockDAO.edit(ingredient);
+    }
 
-    public Map<Ingredient, Integer> sortByNameAndGet() {
+    /*public Map<Ingredient, Integer> sortByNameAndGet() {
         Map<Ingredient, Integer> sortedIngredients = new TreeMap<>((o1, o2) -> {
             if (o1.getTitle().compareTo(o2.getTitle()) < 0) {
                 return -1;
@@ -57,10 +47,10 @@ public class StockService {
         }
 
         return sortedIngredients;
-    }
+    }*/
 
-    private boolean validateIngredient(Ingredient ingredient, Integer quantity) {
+    /*private boolean validateIngredient(Ingredient ingredient, Integer quantity) {
         return ingredient != null && quantity != null && quantity >= 0;
-    }
+    }*/
 
 }

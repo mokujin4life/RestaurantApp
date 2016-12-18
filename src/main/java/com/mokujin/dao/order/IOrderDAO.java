@@ -1,6 +1,8 @@
 package com.mokujin.dao.order;
 
 import com.mokujin.model.order.Order;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,80 +11,33 @@ import java.util.List;
  * Created by mokujin on 29.11.16.
  */
 public class IOrderDAO implements OrderDAO {
-
-
-    List<Order> orders = new ArrayList<>();
+    @Autowired
+    SessionFactory sessionFactory;
 
     @Override
     public List<Order> getAll() {
-        return orders;
+        return sessionFactory.getCurrentSession().createQuery("select o from Order o order by o.id").list();
     }
 
     @Override
     public Order get(int id) {
-        try {
-            return orders.get(id);
-        } catch (Exception e) {
-            throw new RuntimeException("no id=" + id + " found");
-        }
-
+        return sessionFactory.getCurrentSession().get(Order.class, id);
     }
 
     @Override
-    public void add(Order order) {
-        orders.add(order);
-        getAll().forEach(System.out::println);
-    }
-
-    @Override
-    public void delete(Integer id) {
-        try {
-            for (Order order : orders) {
-                if (order.getId() == id) {
-                    orders.remove(order);
-                }
-            }
-        } catch (Exception e) {
-            throw new RuntimeException("no object with id=" + id + " found");
-        }
-    }
-
-    @Override
-    public void edit(Order order) {
-        try {
-            orders.remove(order.getId());
-            orders.add(order.getId(), order);
-        } catch (Exception e) {
-            throw new RuntimeException("no object=" + order + " found");
-        }
-    }
-
-    /*SessionFactory sessionFactory;
-
-    public List<Order> getAll() {
-        return sessionFactory.getCurrentSession().createQuery("select * from Order").list();
-    }
-
-    public Order get(Integer id) {
-        return (Order) sessionFactory.getCurrentSession().get(Order.class, id);
-    }
-
     public void add(Order order) {
         sessionFactory.getCurrentSession().save(order);
     }
 
+    @Override
     public void delete(Integer id) {
-        Order order = (Order) sessionFactory.getCurrentSession().get(Order.class, id);
+        Order order = sessionFactory.getCurrentSession().get(Order.class, id);
         sessionFactory.getCurrentSession().delete(order);
     }
 
+    @Override
     public void edit(Order order) {
-        Order existingOrder = (Order) sessionFactory.getCurrentSession().get(Order.class, order.getId());
+        sessionFactory.getCurrentSession().update(order);
+    }
 
-        existingOrder.setDate(order.getDate());
-        existingOrder.setWaiter(order.getWaiter());
-        existingOrder.setTableNumber(order.getTableNumber());
-
-        sessionFactory.getCurrentSession().save(existingOrder);
-    }*/
 }
